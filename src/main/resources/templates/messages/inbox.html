@@ -1,0 +1,25 @@
+<!doctype html>
+<html  xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/main">
+  <head>
+    <meta charset="utf-8">
+    <title>Inbox</title>
+  </head>
+<body layout:fragment="content">
+
+    <h1>Inbox</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>From</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="message : ${messages}">
+                <td th:text="${message.from.email}">From</td>
+                <td><a th:href="@{/messages/{id}(id=${message.id})}" th:text="${message.summary}">Summary</a></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

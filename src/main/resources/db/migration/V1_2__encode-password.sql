@@ -1,0 +1,1 @@
+update message_user set password = '{bcrypt}$2a$10$J98R6KdtCssyA5wUb53C0OnEygupOAOJUec0ceNT7VewX3OPIP966';
