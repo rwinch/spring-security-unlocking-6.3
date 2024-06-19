@@ -1,3 +1,6 @@
 spring:
   application:
     name: messages
+  security:
+    user:
+      password: '{bcrypt}$2a$10$J98R6KdtCssyA5wUb53C0OnEygupOAOJUec0ceNT7VewX3OPIP966'
