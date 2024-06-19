@@ -34,7 +34,11 @@
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/messages/sent}">Sent</a>
                     </li>
-                    <li class="nav-item">
+                </ul>
+                <ul class="navbar-nav" sec:authorize="authenticated">
+                    <li class="navbar-text px-2" th:text="${#authentication?.name}">
+                    </li>
+                    <li class="nav-item" th:if="${#authentication?.authenticated}">
                         <form class="d-flex" th:action="@{/logout}" method="post">
                             <button class="btn btn-outline-success" type="submit">Log out</button>
                         </form>
