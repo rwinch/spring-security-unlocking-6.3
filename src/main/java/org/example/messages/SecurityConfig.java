@@ -24,7 +24,13 @@ public class SecurityConfig {
 				.rpId("example.localhost")
 				.allowedOrigins("https://example.localhost:8443")
 			)
-			.formLogin(Customizer.withDefaults());
+			.formLogin(form -> form
+				.loginPage("/login")
+				.permitAll()
+			)
+			.logout(logout -> logout
+				.permitAll()
+			);
 		return http.build();
 	}
 }
