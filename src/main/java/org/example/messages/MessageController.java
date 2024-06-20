@@ -1,5 +1,6 @@
 package org.example.messages;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,8 +12,6 @@ import java.util.Map;
 @Controller
 @RequestMapping("/messages/")
 class MessageController {
-	// FIXME: this should not be hard coded
-	final Long currentUserId = 0L;
 
 	final MessageRepository messages;
 
@@ -26,14 +25,14 @@ class MessageController {
 	}
 
 	@GetMapping("inbox")
-	String inbox(Map<String, Object> model) {
-		model.put("messages", this.messages.findByToId(currentUserId));
+	String inbox(@AuthenticationPrincipal MessageUser user, Map<String, Object> model) {
+		model.put("messages", this.messages.findByToId(user.getId()));
 		return "messages/inbox";
 	}
 
 	@GetMapping("sent")
-	String sent(Map<String, Object> model) {
-		model.put("messages", this.messages.findByFromId(currentUserId));
+	String sent(@AuthenticationPrincipal MessageUser user, Map<String, Object> model) {
+		model.put("messages", this.messages.findByFromId(user.getId()));
 		return "messages/sent";
 	}
 
