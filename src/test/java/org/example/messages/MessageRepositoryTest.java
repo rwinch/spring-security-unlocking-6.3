@@ -9,6 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 public class MessageRepositoryTest {
 	@Test
+	@WithRobUser
 	void hello(@Autowired MessageRepository messages, @Autowired MessageUserRepository users) {
 		MessageUser rob = users.findById(0L).get();
 		MessageUser josh = users.findById(1L).get();
