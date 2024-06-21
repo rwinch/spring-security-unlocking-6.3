@@ -18,7 +18,7 @@ class MessagesApplicationTests {
 	MockMvc mockMvc;
 
 	@Test
-	@WithMockUser
+	@WithRobUser
 	void accessInboxWhenAuthNThenOk() throws Exception {
 		this.mockMvc.perform(get("/messages/inbox"))
 				.andExpect(status().isOk());
