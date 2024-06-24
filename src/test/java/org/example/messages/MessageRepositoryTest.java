@@ -21,6 +21,23 @@ public class MessageRepositoryTest {
 	}
 
 	@Test
+	@WithRobUser
+	void saveWhenGranted(@Autowired MessageRepository messages, @Autowired MessageUserRepository users) {
+		MessageUser rob = users.findById(0L).get();
+		MessageUser eve = users.findById(2L).get();
+		assertThat(messages.save(new Message(1000L, "Hi Eve", "This message is from Rob", rob, eve)));
+	}
+
+	@Test
+	@WithEveUser
+	void saveWhenDenied(@Autowired MessageRepository messages, @Autowired MessageUserRepository users) {
+		MessageUser rob = users.findById(0L).get();
+		MessageUser eve = users.findById(2L).get();
+		assertThatExceptionOfType(AuthorizationDeniedException.class)
+				.isThrownBy(() -> messages.save(new Message(1000L, "Hi Eve", "This message is from Rob", rob, eve)));
+	}
+
+	@Test
 	@WithEveUser
 	void eve(@Autowired MessageRepository messages) {
 		assertThatExceptionOfType(AuthorizationDeniedException.class)
