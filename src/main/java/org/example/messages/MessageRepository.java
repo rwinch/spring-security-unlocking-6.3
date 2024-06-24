@@ -8,7 +8,7 @@ import java.util.Optional;
 interface MessageRepository extends CrudRepository<Message, Long> {
 
 	@Override
-	@PostAuthorize("returnObject.orElse(null)?.to?.id == principal?.id or returnObject.orElse(null)?.from?.id == principal?.id")
+	@PostAuthorize("@messageAuthz.check(principal, returnObject, 'read')")
 	Optional<Message> findById(Long aLong);
 
 	Iterable<Message> findByFromId(Long id);
