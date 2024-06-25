@@ -15,9 +15,15 @@ java {
 
 repositories {
     mavenCentral()
+    maven {
+        // replace with the path to the build/repo on your file system
+        url = 'file:///home/rwinch/code/rwinch/spring-security-webauthn/main/build/repo/'
+    }
+
 }
 
 dependencies {
+    implementation 'io.github.rwinch.webauthn:spring-security-webauthn:0.0.1-SNAPSHOT'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'

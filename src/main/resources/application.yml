@@ -4,3 +4,14 @@ spring:
   security:
     user:
       password: '{bcrypt}$2a$10$J98R6KdtCssyA5wUb53C0OnEygupOAOJUec0ceNT7VewX3OPIP966'
+  ssl:
+    bundle:
+      pem:
+        localhost:
+          keystore:
+            certificate: "classpath:example.localhost.pem"
+            private-key: "classpath:example.localhost-key.pem"
+server:
+  port: 8443
+  ssl:
+    bundle: localhost
