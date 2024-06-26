@@ -1,0 +1,24 @@
+{
+  "writes": [
+    {
+      "user": "user:1",
+      "relation": "to",
+      "object": "message:100"
+    },
+    {
+      "user": "user:0",
+      "relation": "from",
+      "object": "message:100"
+    },
+    {
+      "user": "user:0",
+      "relation": "from",
+      "object": "message:1000"
+    },
+    {
+      "user": "user:2",
+      "relation": "to",
+      "object": "message:1000"
+    }
+  ]
+}

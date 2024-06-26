@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.1",
+  "type_definitions": [
+    {
+      "type": "user"
+    },
+    {
+      "type": "message",
+      "relations": {
+        "to": {
+          "this": {}
+        },
+        "from": {
+          "this": {}
+        }
+      },
+      "metadata": {
+        "relations": {
+          "to": {
+            "directly_related_user_types": [
+              {
+                "type": "user"
+              }
+            ]
+          },
+          "from": {
+            "directly_related_user_types": [
+              {
+                "type": "user"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

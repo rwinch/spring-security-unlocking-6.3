@@ -15,3 +15,5 @@ server:
   port: 8443
   ssl:
     bundle: localhost
+openfga:
+  fgaStoreName: messages

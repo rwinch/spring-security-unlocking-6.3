@@ -30,11 +30,6 @@ public class SecurityConfig {
 				.anyRequest().authenticated()
 			)
 			.httpBasic(Customizer.withDefaults())
-			.with(new WebauthnConfigurer<>(), (passkeys) -> passkeys
-				.rpName("Spring Security Relying Party")
-				.rpId("example.localhost")
-				.allowedOrigins("https://example.localhost:8443")
-			)
 			.formLogin(form -> form
 				.loginPage("/login")
 				.permitAll()

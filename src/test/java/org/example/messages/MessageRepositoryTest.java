@@ -3,12 +3,14 @@ package org.example.messages;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.security.authorization.AuthorizationDeniedException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 @SpringBootTest
+@Import(OpenFgaContainerConfiguration.class)
 public class MessageRepositoryTest {
 	@Test
 	@WithRobUser
