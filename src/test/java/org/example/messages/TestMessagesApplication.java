@@ -8,6 +8,7 @@ public class TestMessagesApplication {
 		SpringApplication
 				.from(MessagesApplication::main)
 				.with(OpenFgaContainerConfiguration.class)
+				.with(AuthzConfiguration.class)
 				.run(args);
 	}
 }

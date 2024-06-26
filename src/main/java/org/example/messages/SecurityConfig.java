@@ -7,10 +7,6 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.DefaultSecurityFilterChain;
 
 @EnableWebSecurity
@@ -30,10 +26,7 @@ public class SecurityConfig {
 				.anyRequest().authenticated()
 			)
 			.httpBasic(Customizer.withDefaults())
-			.formLogin(form -> form
-				.loginPage("/login")
-				.permitAll()
-			)
+			.oauth2Login(Customizer.withDefaults())
 			.logout(logout -> logout
 				.permitAll()
 			);

@@ -23,7 +23,7 @@ repositories {
         // replace with the path to the build/repo on your file system
         url = 'file:///home/rwinch/code/openfga/spring-boot-starter/main/build/repo/'
     }
-
+    maven { url 'https://repo.spring.io/snapshot' }
 }
 
 dependencies {
@@ -37,6 +37,13 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
     implementation 'dev.openfga:openfga-sdk:0.5.0'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    testImplementation("org.springframework.experimental.boot:spring-boot-testjars:0.0.2-SNAPSHOT")
+    testImplementation("org.springframework.experimental.boot:spring-boot-testjars:0.0.2-SNAPSHOT") {
+        capabilities {
+            requireCapability("org.springframework.experimental.boot:spring-boot-testjars-maven")
+        }
+    }
     testImplementation 'org.springframework.security:spring-security-test'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'com.h2database:h2'
